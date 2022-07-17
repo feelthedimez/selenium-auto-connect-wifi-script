@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 import os
+import time
 
 def setup_chrome_options():
     chrome_options = Options()
@@ -17,7 +17,7 @@ def setup_chrome_options():
 def get_chromedriver_service():
     # Set path to chromedriver as per your configuration
     
-    webdriver_service = Service(os.getcwd()+"/chromedriver")
+    webdriver_service = Service(executable_path=os.getcwd() + "/personalProjects/autoLoginWifi/chromedriver")
     return webdriver.Chrome(service=webdriver_service, options=setup_chrome_options())
 
 
@@ -54,8 +54,7 @@ def login_to_wifi():
 
     driver.quit()
     
-    
-
 driver = get_chromedriver_service()
 driver.get("http://172.16.0.1/login")
 login_to_wifi()
+# check_html_page()
